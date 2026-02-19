@@ -11,10 +11,27 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <p>Jnr Pest Control & Cleaning Services Co.</p>
-        <a href="#contact" class="small-link">Book a Service</a>
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo">
+          <span class="logo-icon">🦟</span>
+          <span class="logo-text">Jnr Pest Control</span>
+        </div>
+        
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        <nav class="nav" id="nav">
+          <a href="#services">Services</a>
+          <a href="#cleaning">Cleaning</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#quote">Get Quote</a>
+          <a href="#contact">Contact</a>
+          <a href="https://wa.me/27813936908" target="_blank" class="nav-cta">📱 WhatsApp</a>
+        </nav>
       </div>
     </header>
 
@@ -81,7 +98,7 @@
         </div>
       </section>
 
-      <section class="section section-alt">
+      <section id="cleaning" class="section section-alt">
         <div class="container two-col">
           <div>
             <h2>Cleaning Services</h2>
@@ -107,7 +124,7 @@
         </div>
       </section>
 
-      <section class="section gallery-section">
+      <section id="gallery" class="section gallery-section">
         <div class="container">
           <h2>Our Recent Work</h2>
           <p class="lead">Professional pest control and cleaning services delivering results across residential and commercial properties.</p>
@@ -268,6 +285,34 @@
     </footer>
     
     <script>
+      // Hamburger menu toggle
+      const hamburger = document.getElementById('hamburger');
+      const nav = document.getElementById('nav');
+      
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      });
+      
+      // Close menu when clicking nav links
+      document.querySelectorAll('.nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          nav.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        });
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+          hamburger.classList.remove('active');
+          nav.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        }
+      });
+      
       function handleQuoteSubmit(event) {
         event.preventDefault();
         
