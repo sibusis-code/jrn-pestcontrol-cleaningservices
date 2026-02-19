@@ -13,10 +13,10 @@
   <body>
     <header class="header">
       <div class="container header-inner">
-        <div class="logo">
+        <a href="#" class="logo">
           <span class="logo-icon">🦟</span>
           <span class="logo-text">Jnr Pest Control</span>
-        </div>
+        </a>
         
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
           <span></span>
@@ -284,7 +284,27 @@
       </div>
     </footer>
     
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+    
     <script>
+      // Back to top button
+      const backToTop = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+      
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
       // Hamburger menu toggle
       const hamburger = document.getElementById('hamburger');
       const nav = document.getElementById('nav');
